@@ -1,0 +1,36 @@
+show access-lists 100
+show ip nat transalations
+
+php artisan make:migration create_empresa_table --create=empresa
+php artisan migrate
+
+php artisan make:migration create_CatalogoTypoCuenta_table --create=CatalogoTypoCuenta
+php artisan make:migration create_CatalogoCuentaxEmpresa --create=CatalogoCuentaxEmpresa
+php artisan make:migration create_Sector_table --create=Sector
+php artisan make:migration create_EstadoFinancieroxEmpresa_table --create=EstadoFinancieroxEmpresa
+php artisan make:migration create_ParametrosComparacionxEmpresa_table --create=ParametrosComparacionxEmpresa
+
+
+php artisan migrate
+php artisan migrate:refresh
+
+php artisan migrate:refresh --path=/database/migrations/2021_11_21_183056_create__estado_financierox_empresa_table.php
+
+
+php artisan make:controller EmpresaController --resource --model Empresa
+
+php artisan serve
+http://127.0.0.1:8000/empresa/
+empresa
+catactaempresa
+parametrosempresa
+estadofinanciero
+analisis2empresas
+analisis1empresas
+analisisparametros
+systemnav
+
+Log::debug('4debugg1112222222222222');
+    if (is_null($record->anio)){
+        Log::debug('4debugg111111111111.');
+        return back()->with('error', 'Anio '.$anio.' no se encuentra para la empresa '.$empresaDB.' Cargar balance para empresa anio');
